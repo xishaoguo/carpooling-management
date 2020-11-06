@@ -1,4 +1,7 @@
-const menuList = [
+/**
+ * 左侧菜单配置
+ */
+const menuList  = [
   {
     index: '1',
     menuImage: 'el-icon-s-home',
@@ -6,15 +9,13 @@ const menuList = [
     slot: 'title',
     child: [
       {
-        index: '1-1',
         text: '首页',
         menuImage: '',
         slot: '',
         path: '/main'
       },
       {
-        index: '1-2',
-        text: '列表',
+        text: '用户',
         menuImage: '',
         slot: '',
         path: '/user'
