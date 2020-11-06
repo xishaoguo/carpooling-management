@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="login-content">
-      <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="80px" >
+      <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="80px">
         <el-form-item label="用户名" prop="userName">
           <el-input v-model="ruleForm.userName" class="login-content-input" placeholder="请输入用户名" maxlength="15"></el-input>
         </el-form-item>
@@ -17,6 +17,7 @@
   </div>
 </template>
 <script>
+import AxiosHttp from '../../utils/http';
 export default {
   data() {
     const validateUserName = (rule, value, callback) => {
@@ -52,7 +53,27 @@ export default {
     onLogin(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$router.push({name: 'home'})
+          // this.$router.push({name: 'home'})
+          // AxiosHttp.postRequest('/user/backend/login', {
+          //   captcha: '',
+          //   password: '123456',
+          //   platformType: 'merchant',
+          //   userName: '13333333333',
+          //   uuid: 'a9d66aeb-c1e2-4054-86b0-fb74b8608614'
+          // },(data)=>{
+          //   console.log("请求回来的数据",data)
+          // });
+          const obj = {
+            captcha: '',
+            password: '123456',
+            platformType: 'merchant',
+            userName: '13333333333',
+            uuid: 'a9d66aeb-c1e2-4054-86b0-fb74b8608614'
+          }
+          const aHttp = new AxiosHttp('/user/backend/login',obj)
+          aHttp.postRequest(data => {
+            console.log("返回数据",data)
+          })
         } else {
           console.log('error submit!!');
           return false;
