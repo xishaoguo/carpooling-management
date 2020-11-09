@@ -19,7 +19,7 @@ const routes: Array<RouteConfig> = [
       {
         path: '/main',
         name: 'main',
-        component: () => import(/* webpackChunkName: "home" */ '../views/home/main.vue')
+        component: () => import(/* webpackChunkName: "main" */ '../views/home/main.vue')
       },
       {
         path: '/order',
